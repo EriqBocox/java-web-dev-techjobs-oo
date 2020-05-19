@@ -8,8 +8,8 @@ abstract public class JobField {
     public String value;
 
     public JobField(){
-//        id = nextId;
-//        nextId++;
+        id = nextId;
+        nextId++;
     }
 
     public JobField(String value){

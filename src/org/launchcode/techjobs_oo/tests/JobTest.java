@@ -12,6 +12,8 @@ import static org.junit.Assert.*;
 
 
 public class JobTest {
+    Job testJob;
+    Job testJob2;
     Job test_job;
     Job test_job_2;
     Job empty_field_1;
@@ -27,38 +29,11 @@ public class JobTest {
     private PositionType positionType;
     private CoreCompetency coreCompetency;
 
-//    @Before
-//    public void createJobOjbect (){
-//        Job test_job = new Job("Web Dev", employer, location, positionType, coreCompetency);
-//        Job test_job_2 = new Job("Web Dev 2", employer,location, positionType, coreCompetency);
-//    }
-//    @Test
-//    public void testSettingJobId(){
-//        assertFalse("This is false", test_job.getId()==test_job_2.getId());
-//    }
-//    @Before
-//    public void testJobConstructorSetsAllFields() {
-//        test_job = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-//    }
-//    @Test
-//    public void testID() {
-//        assertEquals(1, test_job.getId());
-//    }
-//    @Test
-//    public void testName(){
-//        assertEquals("Product tester", test_job.getName());
-//    }
-//    @Test
-//    public void testEmployer(){
-//        assertEquals("ACME", test_job.getEmployer().toString());
-//    }
-//    @Test
-//    public void testLocation(){
-//        assertEquals("Desert", test_job.getLocation().toString());
-//    }
 
     @Before
     public void createJobObject(){
+        testJob = new Job();
+        testJob2 = new Job();
         test_job = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         test_job_2 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         empty_field_1 = new Job("", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
@@ -69,7 +44,10 @@ public class JobTest {
         empty_field_all = new Job("", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency(""));
 
     }
-
+    @Test
+    public void testSettingJobId(){
+        assertEquals(testJob.getId(), testJob2.getId(), 1);
+    }
     @Test
     public void testJobConstructorSetsAllFields() {
         assertEquals(1, test_job.getId());
@@ -86,7 +64,6 @@ public class JobTest {
         int firstID = test_job.getId();
         int secondID = test_job_2.getId();
         assertFalse (test_job.equals(test_job_2));
-        assertFalse (firstID == secondID);
     }
     @Test
     public void testBlankLine(){
